@@ -1,15 +1,12 @@
-import { useState } from "react";
-
 import {
   ClerkProvider,
   SignedIn,
   SignedOut,
-  UserButton,
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import SearchPage from "./components/SearchPage";
-import LandingPage from "./components/LandingPage";
+import SearchPage from "./pages/SearchPage";
+import LandingPage from "./pages/LandingPage";
 
 if (!import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
