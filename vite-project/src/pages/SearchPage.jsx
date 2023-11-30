@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 import NavBar from "../components/NavBar";
+import GroupGallery from "../components/GroupGallery";
 
 function SearchPage() {
   const { user } = useUser();
@@ -32,7 +33,7 @@ function SearchPage() {
     <>
       <NavBar />
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      {/* Other components or logic to display when the user data is available */}
+      <GroupGallery />
     </>
   );
 }
