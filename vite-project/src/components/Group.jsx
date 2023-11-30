@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import GroupModal from './GroupModal'; // Import the modal component
 
 const Group = ({ data }) => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
+
     return (
-        <div className="group-box" style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
-            <h3>{data.name}</h3>
+        <div className="border border-black p-2 m-2 cursor-pointer" onClick={openModal}>
+            <h3 className="text-md font-bold">{data.name}</h3>
             <p><strong>ID:</strong> {data.id}</p>
             <p><strong>Description:</strong> {data.description}</p>
             <p><strong>Member Count:</strong> {data.memberCount}</p>
+            <p><strong>Rating:</strong> {data.rating} / 5</p>
+            {isModalOpen && <GroupModal data={data} onClose={closeModal} />}
         </div>
     );
 };
