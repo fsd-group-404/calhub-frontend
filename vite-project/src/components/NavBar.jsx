@@ -23,6 +23,7 @@ function NavBar() {
         </ul>
       </div>
       <div className="navbar-end">
+        <input type="checkbox" value="light" className="toggle theme-controller"/>
         <UserButton />
       </div>
     </div>

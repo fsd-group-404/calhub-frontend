@@ -47,7 +47,7 @@ const GroupGallery = () => {
     const [groups, setGroups] = useState(dummyGroups);
 
     return (
-        <div className="group-gallery">
+        <div className="flex flex-row flex-wrap justify-center gap-4">
             {groups.map(group => (
                 <Group key={group.id} data={group} />
             ))}
@@ -56,3 +56,5 @@ const GroupGallery = () => {
 };
 
 export default GroupGallery;
+
+

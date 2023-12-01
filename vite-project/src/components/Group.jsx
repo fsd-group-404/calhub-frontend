@@ -8,7 +8,7 @@ const Group = ({ data }) => {
     const closeModal = () => setModalOpen(false);
 
     return (
-        <div className="border border-black p-2 m-2 cursor-pointer" onClick={openModal}>
+        <div className="border border-black p-2 m-2 cursor-pointer w-1/4 p-4 shadow-2xl shadow-sc rounded-xl" onClick={openModal}>
             <h3 className="text-md font-bold">{data.name}</h3>
             <p><strong>ID:</strong> {data.id}</p>
             <p><strong>Description:</strong> {data.description}</p>
