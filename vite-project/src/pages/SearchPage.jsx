@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 import NavBar from "../components/NavBar";
 import GroupGallery from "../components/GroupGallery";
+import CreateGroupButton from "../components/CreateGroupButton";
+import axios from "axios";
 
 function SearchPage() {
   const { user } = useUser();
+  // TODO: Shift group state up to here
 
   useEffect(() => {
     if (user) {
@@ -32,7 +35,8 @@ function SearchPage() {
   return (
     <>
       <NavBar />
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <h1 className="text-3xl font-bold underline text-center">Search Page</h1>
+      <CreateGroupButton />
       <GroupGallery />
     </>
   );
