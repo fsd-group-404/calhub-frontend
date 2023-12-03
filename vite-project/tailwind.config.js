@@ -7,7 +7,7 @@ export default {
         'xl': '20px',
       },
       colors: {
-        'sc': '#BCA591',
+        'sc': '#FFE1B6',
       },
       dropShadow: {
         'custom': '0 0 10px rgba(0, 100, 100, 0.25)',

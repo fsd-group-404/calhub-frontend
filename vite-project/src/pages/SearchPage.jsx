@@ -8,6 +8,7 @@ import axios from "axios";
 function SearchPage() {
   const { user } = useUser();
   // TODO: Shift group state up to here
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -36,8 +37,8 @@ function SearchPage() {
     <>
       <NavBar />
       <h1 className="text-3xl font-bold underline text-center">Search Page</h1>
-      <CreateGroupButton />
-      <GroupGallery />
+      <CreateGroupButton setToggle={setToggle}/>
+      <GroupGallery toggle={toggle}/>
     </>
   );
 }

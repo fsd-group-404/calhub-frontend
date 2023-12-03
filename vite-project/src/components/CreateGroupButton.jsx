@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useUser } from "@clerk/clerk-react";
 
-const CreateGroupButton = () => {
+const CreateGroupButton = ({setToggle}) => {
+    const { user } = useUser();
     const [groupData, setGroupData] = useState({
         name: "",
         description: "",
@@ -15,14 +17,15 @@ const CreateGroupButton = () => {
       }
     
       const handleFormSubmit = (event) => {
-        console.log("SUBMIT HIT")
         event.preventDefault();
         document.getElementById("creategroupmodal").close()
         console.log(groupData);
+        groupData.userID = user.id;
         axios
             .post("http://localhost:3000/groups", groupData)
             .then((response) => {
                 console.log(response.data);
+                setToggle((prev) => !prev);
             });
         }
         // TODO: Size modal appropriately
@@ -34,8 +37,8 @@ const CreateGroupButton = () => {
       >
         Create Study Group
       </button>
-      <dialog id="creategroupmodal" className="modal border-8">
-        <div className="modal-box border-8 w-1/2">
+      <dialog id="creategroupmodal" className="modal">
+        <div className="modal-box rounded-xl">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
