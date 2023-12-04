@@ -28,7 +28,7 @@ const Group = ({ data, joinable }) => {
   return (
     <>
       <div
-        className="border border-black p-6 m-2 cursor-pointer w-1/5 h-80 p-4 shadow-2xl shadow-accent rounded-xl transition durprimary hover:scale-110"
+        className="border border-black p-6 m-2 cursor-pointer w-1/5 h-80 p-4 shadow-2xl shadow-accent rounded-xl transition durprimary hover:scale-105"
         onClick={openModal}
       >
         <div className="flex flex-col justify-between h-full">
@@ -47,7 +47,7 @@ const Group = ({ data, joinable }) => {
                   </div>
                   <div className="avatar placeholder">
                     <div className="w-12 bg-neutral text-neutral-content">
-                      <span>+{data.size - 1}</span>
+                      <span>+{memberData.length - 1}</span>
                     </div>
                   </div>
                 </>
