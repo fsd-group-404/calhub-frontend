@@ -7,6 +7,7 @@ import {
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import SearchPage from "./pages/SearchPage";
 import LandingPage from "./pages/LandingPage";
+import MyGroupsPage from "./pages/MyGroupsPage";
 
 if (!import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
@@ -28,6 +29,19 @@ function ClerkProviderWithRoutes() {
               </SignedIn>
               <SignedOut>
                 <LandingPage/>
+              </SignedOut>
+            </>
+          }
+        />
+        <Route
+          path="/my-groups"
+          element={
+            <>
+              <SignedIn>
+                <MyGroupsPage />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn/>
               </SignedOut>
             </>
           }

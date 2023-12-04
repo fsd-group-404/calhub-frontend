@@ -12,9 +12,10 @@ function SearchPage() {
 
   useEffect(() => {
     if (user) {
+      console.log("!!!!!!!!!!!!!!!!!!!")
       console.log("Sending following user data to server:", user);
       console.log(JSON.stringify(user))
-      fetch("http://localhost:3000/user", {
+      fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,8 +38,7 @@ function SearchPage() {
     <>
       <NavBar />
       <h1 className="text-3xl font-bold underline text-center">Search Page</h1>
-      <CreateGroupButton setToggle={setToggle}/>
-      <GroupGallery toggle={toggle}/>
+      <GroupGallery url= {`http://localhost:3000/groups/new?userID=${user.id}`} toggle={toggle} joinable={true}/>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { UserButton } from "@clerk/clerk-react";
 import logoImage from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 // TODO: Make it so that the currently viewed page is highlighted in the navbar
 
@@ -15,10 +16,10 @@ function NavBar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <Link to="/"><a>Group Search</a></Link>
           </li>
           <li>
-            <a>Item 2</a>
+            <Link to="/my-groups"><a>My Groups</a></Link>
           </li>
         </ul>
       </div>

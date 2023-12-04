@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Group from './Group'; // Import your Group component
 import axios from "axios";
+import { useUser } from "@clerk/clerk-react";
 //TODO: Add search bar and searching via filter
-const GroupGallery = ({toggle}) => {
+const GroupGallery = ({url, toggle, joinable}) => {
+    const { user } = useUser();
     let dummyGroups = [
         {
             "id": 1,
@@ -28,20 +30,16 @@ const GroupGallery = ({toggle}) => {
     ]
     
     // State to hold groups data (replace with dummyGroups for testing)
-    const [groups, setGroups] = useState(dummyGroups);
+    const [groups, setGroups] = useState([]);
 
     useEffect(() => {
         console.log("Fetching groups...")
         axios
-            .get("http://localhost:3000/groups")
+        .get(url)
             .then((response) => {
                 console.log("Data fetched:")
                 console.log(response.data);
                 setGroups(response.data);
-                console.log(groups)
-                for (group in groups) {
-                    console.log(group.id)
-                }
             });
     }, [toggle]);
 
@@ -49,7 +47,7 @@ const GroupGallery = ({toggle}) => {
     return (
         <div className="flex flex-row flex-wrap justify-center gap-10 h-fit">
             {groups.map(group => (
-                <Group data={group} />
+                <Group key={group.id} data={group} joinable={joinable}/>
             ))}
         </div>
     );
