@@ -4,13 +4,48 @@ import { useState } from "react";
 import GroupModal from "./GroupModal";
 
 const Group = ({ data, joinable }) => {
-  let [memberData, setMemberData] = useState([]);
+
+// make some dummy member data (two members)
+let dummyMemberData = [
+    {
+        "id": 1,
+        "userID": 1,
+        "groupID": 1,
+        "role": "owner",
+        "users": {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": "johndoe@berkeley",
+            "imageUrl": "https://cdn2.vectorstock.com/i/1000x1000/17/41/initial-j-letter-with-crown-vector-38781741.jpg",
+        }
+    },
+    {
+        "id": 2,
+        "userID": 2,
+        "groupID": 1,
+        "role": "member",
+        "users": {
+            "id": 2,
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "email": "janedoe@berkeley",
+            "imageUrl": "https://i.pinimg.com/1200x/ca/2a/c2/ca2ac2b6e453a2654534636091579e7c.jpg",
+        }
+    }
+]
+
+
+
+  let [memberData, setMemberData] = useState(dummyMemberData);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
+    console.log("DATA")
+    console.log(data)
     console.log(`Fetching group ${data.id} members...`);
     axios
       .get(`http://localhost:3000/groups/${data.id}/members`)
@@ -34,8 +69,8 @@ const Group = ({ data, joinable }) => {
         <div className="flex flex-col justify-between h-full">
           <div></div>
           <div>
-            <h3 className="text-lg font-bold">{data.name}</h3>
-            <p className="text-lg">{data.description}</p>
+            <h3 className="text-lg font-bold">{data.code}</h3>
+            <p className="text-lg">{data.name}</p>
             <div className="divider divider-accent"></div>
             <p>#{data.id}</p>
             {memberData && memberData.length > 0 && (

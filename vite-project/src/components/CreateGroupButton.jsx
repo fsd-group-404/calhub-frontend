@@ -5,9 +5,11 @@ import { useUser } from "@clerk/clerk-react";
 const CreateGroupButton = ({setToggle}) => {
     const { user } = useUser();
     const [groupData, setGroupData] = useState({
+        code: "",
         name: "",
         description: "",
-        size: 0,
+        size: 1,
+        sizeLimit: null,
       });
 
     const handleInputChange = (event) => {
@@ -44,12 +46,19 @@ const CreateGroupButton = ({setToggle}) => {
               ✕
             </button>
           </form>
-          <h3 className="font-bold text-lg">Fill out</h3>
-          <input type="text" placeholder="Name" name="name" value={groupData.name} className="input input-bordered input-primary w-full max-w-xs" onChange={handleInputChange}/>
-          <input type="text" placeholder="Description" name="description" value={groupData.description} className="input input-bordered input-primary w-full max-w-xs" onChange={handleInputChange}/>
-          <input type="number" placeholder="Size" name="size" value={groupData.size} className="input input-bordered input-primary w-full max-w-xs" onChange={handleInputChange}/>
-          <button className="btn btn-secondary" onClick={handleFormSubmit}>Submit</button>
-          <p className="py-4">Press ESC key or click on ✕ button to close</p>
+          <div className="p-4 shadow-md rounded-lg">
+    <h3 className="text-lg font-bold text-center text-white mb-4">Fill out some information about your study group</h3>
+    <div className="space-y-3 mb-4">
+        <input type="text" placeholder="Course Code" name="code" value={groupData.code} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
+        <input type="text" placeholder="Course Name" name="name" value={groupData.name} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
+        <input type="text" placeholder="Description (location, time, recurrence of meetings)" name="description" value={groupData.description} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
+        <input type="number" placeholder="Group Size" name="size" value={groupData.sizeLimit} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
+    </div>
+    <div className="flex justify-center">
+        <button className="btn btn-primary" onClick={handleFormSubmit}>Submit</button>
+    </div>
+    <p className="text-sm text-white text-center mt-4">Press ESC key or click on ✕ button to close</p>
+</div>
         </div>
       </dialog>
     </>

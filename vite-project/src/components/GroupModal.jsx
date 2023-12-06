@@ -64,7 +64,7 @@ const [isOwner, setIsOwner] = useState(false);
           <strong>Description:</strong> {data.description}
         </p>
         <p className="text-lg">
-          <strong>Size:</strong> {data.size}
+          <strong>Size:</strong> {data.sizeLimit}
         </p>
         <p className="text-lg">
           <strong>Rating:</strong> {data.rating} / 5
