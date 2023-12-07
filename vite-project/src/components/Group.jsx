@@ -36,29 +36,30 @@ let dummyMemberData = [
 ]
 
 
-
-  let [memberData, setMemberData] = useState([]);
+  // replace [] with dummyMemberData to see the dummy data
+  let [memberData, setMemberData] = useState(dummyMemberData);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  useEffect(() => {
-    console.log("DATA")
-    console.log(data)
-    console.log(`Fetching group ${data.id} members...`);
-    axios
-      .get(`http://localhost:3000/groups/${data.id}/members`)
-      .then((response) => {
-        console.log("Member data fetched:");
-        if (response.data.length > 0) {
-          console.log("HAD STUFF");
-          console.log(response.data);
-          setMemberData(response.data);
-          console.log("set");
-        }
-      });
-  }, []);
+  // comment this out to see the dummy data
+  // useEffect(() => {
+  //   console.log("DATA")
+  //   console.log(data)
+  //   console.log(`Fetching group ${data.id} members...`);
+  //   axios
+  //     .get(`http://localhost:3000/groups/${data.id}/members`)
+  //     .then((response) => {
+  //       console.log("Member data fetched:");
+  //       if (response.data.length > 0) {
+  //         console.log("HAD STUFF");
+  //         console.log(response.data);
+  //         setMemberData(response.data);
+  //         console.log("set");
+  //       }
+  //     });
+  // }, []);
 
   return (
     <>
