@@ -14,9 +14,10 @@ function MyGroupsPage() {
   return (
     <>
       <NavBar />
-      <h1 className="text-3xl font-bold underline text-center">My Groups Page</h1>
+      {/* <h1 className="text-3xl font-bold underline text-center">My Groups Page</h1> */}
       <CreateGroupButton setToggle={setToggle}/>
-      <GroupGallery url={`http://localhost:3000/groups/curr?userID=${user.id}`} toggle={toggle} joinable={false}/>
+      <br></br>
+      <GroupGallery url={`http://localhost:3000/groups/curr?userID=${user.id}`} toggle={toggle} joinable={false} filter={""}/>
     </>
   );
 }

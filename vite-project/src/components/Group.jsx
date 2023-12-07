@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import GroupModal from "./GroupModal";
 
-const Group = ({ data, joinable }) => {
+const Group = ({ data, joinable, onReload}) => {
 
 // make some dummy member data (two members)
 let dummyMemberData = [
@@ -37,7 +37,7 @@ let dummyMemberData = [
 
 
 
-  let [memberData, setMemberData] = useState(dummyMemberData);
+  let [memberData, setMemberData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -73,6 +73,7 @@ let dummyMemberData = [
             <p className="text-lg">{data.name}</p>
             <div className="divider divider-accent"></div>
             <p>#{data.id}</p>
+            <div className="avatar-group -space-x-6 rtl:space-x-reverse">
             {memberData && memberData.length > 0 && (
                 <>
                   <div className="avatar">
@@ -80,20 +81,25 @@ let dummyMemberData = [
                       <img src={memberData[0].users.imageUrl}/>
                     </div>
                   </div>
-                  <div className="avatar placeholder">
-                    <div className="w-12 bg-neutral text-neutral-content">
-                      <span>+{memberData.length - 1}</span>
-                    </div>
-                  </div>
                 </>
-              )}
-            <p className="text-right">{data.rating} Stars</p>
+            )}
+            {
+  memberData.length-1 !== 0 &&
+  <div className="avatar placeholder">
+    <div className="w-12 bg-neutral text-neutral-content">
+      <span>+{memberData.length - 1}</span>
+    </div>
+  </div>
+}
+            </div>
+
+            <p className="text-right">{memberData.length}/{data.sizeLimit} Members</p>
           </div>
         </div>
       </div>
 
       {isModalOpen && (
-        <GroupModal onClose={closeModal} data={data} memberData={memberData} joinable={joinable}/>
+        <GroupModal onClose={closeModal} data={data} memberData={memberData} joinable={joinable} onReload={onReload} reloadMD={setMemberData}/>
       )}
     </>
   );

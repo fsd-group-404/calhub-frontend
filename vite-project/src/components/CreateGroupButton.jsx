@@ -8,7 +8,6 @@ const CreateGroupButton = ({setToggle}) => {
         code: "",
         name: "",
         description: "",
-        size: 1,
         sizeLimit: null,
       });
 
@@ -52,7 +51,7 @@ const CreateGroupButton = ({setToggle}) => {
         <input type="text" placeholder="Course Code" name="code" value={groupData.code} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
         <input type="text" placeholder="Course Name" name="name" value={groupData.name} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
         <input type="text" placeholder="Description (location, time, recurrence of meetings)" name="description" value={groupData.description} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
-        <input type="number" placeholder="Group Size" name="size" value={groupData.sizeLimit} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
+        <input type="number" placeholder="Group Size" name="sizeLimit" value={groupData.sizeLimit} className="bg-white input input-bordered input-primary w-full text-black" onChange={handleInputChange} />
     </div>
     <div className="flex justify-center">
         <button className="btn btn-primary" onClick={handleFormSubmit}>Submit</button>
